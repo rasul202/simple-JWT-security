@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: creating "users" table
+      author: Rasul Taghisoy
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                    name: firstname
+                    type: varchar(100)
+                    constraints:
+                      nullable: false
+              - column:
+                    name: surname
+                    type: varchar(100)
+              - column:
+                    name: email
+                    type: varchar(100)
+              - column:
+                    name: password
+                    type: varchar(100)
+              - column:
+                    name: created_at
+                    type: timestamp
+                    defaultValue: now()
+                    constraints:
+                      nullable: false
+              - column:
+                    name: status
+                    type: int
+                    defaultValue: 1
+
+
+          remarks: table that store the information of users #keeps information about table
+          schemaName: public
+
+  - changeSet:
+      id: adding "role" column
+      author: rasul
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: role
+                  type: varchar(50)
